@@ -8,12 +8,12 @@ export default function Hero() {
   return (
     <main className="page relative bg-black">
 
-      {/* 3D OBJECT */}
+     
       <div className="fixed inset-0 z-0 opacity-50 pointer-events-none">
         <Hero3D />
       </div>
 
-      {/* CONTENT */}
+     
       <div className="relative z-10">
 
         {/* HOME */}
