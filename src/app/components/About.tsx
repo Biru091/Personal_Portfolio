@@ -1,4 +1,3 @@
-import PhantomRings from "./ThreedObject/object";
 export default function About() {
   return (
     <section

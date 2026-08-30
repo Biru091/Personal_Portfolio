@@ -3,7 +3,6 @@ import HeroContent from "../Hero-section/Hero-content/HeroContent";
 import SkillsPage from "../Skill";
 import About from "../About";
 import Contact from "@/app/components/Contact";
-import PhantomRings from "../ThreedObject/object";
 import Projects from "../Project";
 export default function Hero() {
   return (
