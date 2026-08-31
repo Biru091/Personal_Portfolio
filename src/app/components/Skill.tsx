@@ -38,14 +38,12 @@ const skills = [
   { name: "Next.js", icon: SiNextdotjs },
   { name: "Tailwind", icon: SiTailwindcss },
   { name: "Node.js", icon: FaNodeJs },
-  { name: "Express", icon: SiExpress },
   { name: "MongoDB", icon: SiMongodb },
   { name: "Git", icon: FaGitAlt },
   { name: "GitHub", icon: FaGithub },
   { name: "GSAP", icon: SiGreensock },
   { name: "Three.js", icon: SiThreedotjs },
-  { name: "Postman", icon: SiPostman },
-  { name: "Figma", icon: FaFigma },
+
 ];
 
 export default function Skills() {
@@ -106,16 +104,16 @@ export default function Skills() {
   return (
     <main
       ref={sectionRef}
-      className="relative min-h-[180vh] overflow-hidden bg-black text-white"
+      className="relative min-h-[180vh] overflow-hidden bg-white text-black"
     >
       <div className="sticky top-0 z-10 flex h-screen items-center justify-center pointer-events-none">
         <div className="absolute top-24 left-6 md:left-16">
-          <p className="mb-3 text-xs uppercase tracking-[0.4em] text-white/40">
+          <p className="mb-3 text-xs uppercase tracking-[0.4em] text-black">
             Technologies
           </p>
 
           <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
-            My <span className="text-white/30">Skills</span>
+            My <span className="text-black">Skills</span>
           </h1>
         </div>
       </div>
@@ -131,13 +129,13 @@ export default function Skills() {
             return (
               <div
                 key={skill.name}
-                className="skill group flex aspect-square flex-col items-center justify-center border border-white/10"
+                className="skill group flex aspect-square flex-col items-center justify-center border border-black"
               >
                 {/* Icon */}
-                <Icon className="text-5xl text-white transition-transform duration-300 group-hover:scale-125 md:text-6xl" />
+                <Icon className="text-5xl text-black transition-transform duration-300 group-hover:scale-125 md:text-6xl" />
 
                 {/* Name */}
-                <p className="mt-4 text-xs uppercase tracking-[0.2em] text-white/60 transition-colors duration-300 group-hover:text-white">
+                <p className="mt-4 text-xs uppercase tracking-[0.2em] text-black transition-colors duration-300 group-hover:text-white">
                   {skill.name}
                 </p>
               </div>

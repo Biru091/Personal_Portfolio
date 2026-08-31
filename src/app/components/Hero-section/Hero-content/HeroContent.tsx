@@ -42,11 +42,11 @@ export default function HeroContent() {
 
         <div className="flex w-full flex-col items-center">
 
-          <p className="name mt-10 py-14 text-sm font-medium uppercase tracking-[0.3em] text-white">
+          <p className="name mt-10 py-14 text-sm font-medium uppercase tracking-[0.3em] text-black">
             Hello, I am Birendra
           </p>
 
-          <p className="text1 py-3 text-center text-4xl uppercase tracking-tight text-white">
+          <p className="text1 py-3 text-center text-3xl uppercase tracking-tight text-black/80 font-black">
             From concept to creation.
           </p>
 
@@ -54,7 +54,7 @@ export default function HeroContent() {
 
             <Link
               href="#projects"
-              className="group flex gap-3 rounded-full bg-white px-3 py-2 text-sm font-medium text-black transition-all duration-300 hover:px-9"
+              className="group flex gap-3 rounded-full bg-black px-3 py-2 text-sm font-medium text-white transition-all duration-300 hover:px-9"
             >
               View My Work
 
@@ -66,7 +66,7 @@ export default function HeroContent() {
 
             <Link
               href="#contact"
-              className="rounded-xl px-3 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-200 hover:text-black"
+              className="rounded-xl px-3 py-2 text-sm font-medium text-black transition-all duration-300 hover:bg-gray-200 hover:text-black"
             >
               Contact Me
             </Link>
@@ -76,13 +76,13 @@ export default function HeroContent() {
         </div>
 
         {/* Bottom right */}
-        <div className="absolute bottom-8 right-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-white animate-pulse">
+        <div className="absolute bottom-8 right-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-blue-700 animate-pulse">
           Scroll
           <ArrowDown size={16} />
         </div>
 
         {/* Bottom left */}
-        <div className="text2 absolute bottom-20 left-7 hidden w-2/7 items-center gap-3 text-wrap uppercase tracking-[0.2em] text-white md:flex md:text-2xl">
+        <div className="text2 absolute bottom-20 left-7 hidden w-2/7 items-center gap-3 text-wrap uppercase tracking-[0.2em] text-black md:flex md:text-2xl">
           Turning concepts into experiences.
         </div>
 

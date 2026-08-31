@@ -1,30 +1,32 @@
+"use client"
 import Hero3D from "../Hero-section/Model/Model";
 import HeroContent from "../Hero-section/Hero-content/HeroContent";
 import SkillsPage from "../Skill";
 import About from "../About";
 import Contact from "@/app/components/Contact";
-import Projects from "../Project";
+
 export default function Hero() {
   return (
-    <main className="page relative bg-black">
+    <main  className="page relative ">
 
      
-      <div className="fixed inset-0 z-0 opacity-50 pointer-events-none">
+      <div  className="fixed inset-0 z-0 opacity-100 pointer-events-none">
         <Hero3D />
       </div>
 
      
       <div className="relative z-10">
 
-        {/* HOME */}
+        
         <section
           id="home"
-          className="min-h-screen "
+          className="min-h-screen  bg-cover bg-center"
+          
         >
           <HeroContent />
         </section>
 
-        {/* ABOUT */}
+       
         <section
           id="about"
           className=""
@@ -32,20 +34,14 @@ export default function Hero() {
           <About />
         </section>
         <section
-          id="about"
+          id="skill"
           className=""
         >
           <SkillsPage />
         </section>
-         <section
-          id="about"
-          className=""
-        >
-         
-          <Projects />
-        </section>
+        
         <section
-          id="about"
+          id="contact"
           className=""
         >
          

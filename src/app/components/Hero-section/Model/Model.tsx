@@ -45,15 +45,15 @@ function Model() {
             },
         });
         tl.to(group.current.rotation, {
-            y: Math.PI / 1.5,
-            duration: 1,
+            y: Math.PI / 0.8,
+            duration: 0.6,
         })
             .to(
                 group.current.position,
                 {
-                    x: 4,
-                    y: 7,
-                    duration: 1,
+                    x: 9,
+                    y: 9,
+                    duration: 0.4,
                 },
                 "<"
             )
@@ -63,7 +63,7 @@ function Model() {
                     x: 0.1,
                     y: 0.1,
                     z: 0.1,
-                    duration: 0.5,
+                    duration: 0.3,
                     ease: "none",
                 },
                 "<"
@@ -96,12 +96,12 @@ function Model() {
         scene.traverse((child) => {
             if (!(child instanceof Mesh)) return;
 
-            const material = new MeshStandardMaterial({
-                map: texture,
-                emissive: "#000000",
-                emissiveMap: texture,
-                emissiveIntensity: 2,
-            });
+           const material = new MeshStandardMaterial({
+  map: texture,
+emissive: "#2563FF",
+  emissiveMap: texture,
+  emissiveIntensity: 2,
+});
 
             if (material.map) {
                 material.map.colorSpace = SRGBColorSpace;
