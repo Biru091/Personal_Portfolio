@@ -82,7 +82,7 @@ export default function HeroContent() {
         </div>
 
         
-        <div className="text2 absolute bottom-20 left-7 hidden w-2/7 items-center gap-3 text-wrap uppercase tracking-[0.2em] text-black md:flex md:text-2xl">
+        <div className="text2 absolute bottom-20 left-7  w-2/7 items-center gap-3 text-wrap uppercase tracking-[0.2em] text-black md:flex md:text-2xl">
           Turning concepts into experiences.
         </div>
 

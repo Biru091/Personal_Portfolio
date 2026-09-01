@@ -22,27 +22,27 @@ export default function Navbar() {
         <nav className="flex items-center gap-2 rounded-full border border-white/10 bg-gray-400 px-3 py-2 backdrop-blur-xl">
          <Link
             href="/"
-            className="nav-link rounded-full px-5 py-2.5 text-sm text-white"
+            className="nav-link rounded-full px-2 py-1 lg:px-5 lg:py-2.5 text-sm text-white"
           >
             Home
           </Link>
           <Link
             href="#skill"
-            className="nav-link rounded-full px-5 py-2.5 text-sm text-white"
+            className="nav-link rounded-full px-2 py-1 lg:px-5 lg:py-2.5 text-sm text-white"
           >
             Skills
           </Link>
 
           <Link
             href="#about"
-            className="nav-link rounded-full px-5 py-2.5 text-sm text-white"
+            className="nav-link rounded-full px-2 py-1 lg:px-5 lg:py-2.5 text-sm text-white"
           >
             About
           </Link>
 
           <Link
             href="#contact"
-            className="nav-link rounded-full px-5 py-2.5 text-sm text-white"
+            className="nav-link rounded-full px-2 py-1 lg:px-5 lg:py-2.5 text-sm text-white"
           >
             Contact
           </Link>
