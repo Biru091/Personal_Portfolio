@@ -32,7 +32,7 @@ function Model() {
   const { size } = useThree();
 
  
-  const modelScale = size.width < 768 ? 0.45 : 0.7;
+  const modelScale = size.width < 768 ? 0.15 : 0.6;
 
  
   useGSAP(() => {
@@ -43,6 +43,7 @@ function Model() {
       opacity: 0,
       z: -7,
       duration: 1,
+      scrub: 1,
       ease: "power3.out",
     });
 
@@ -126,7 +127,7 @@ function Model() {
     >
       <primitive
         object={scene}
-        position={[0, -3, 0]}
+        position={[0, -4, 0]}
         rotation={[3, Math.PI / 2, Math.PI / 2]}
       />
     </group>
