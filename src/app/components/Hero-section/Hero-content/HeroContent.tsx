@@ -76,7 +76,7 @@ export default function HeroContent() {
         </div>
 
        
-        <div className="absolute bottom-14 right-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-blue-700 animate-pulse">
+        <div className="absolute bottom-20 md:bottom-8 right-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-blue-700 animate-pulse">
           Scroll
           <ArrowDown size={16} />
         </div>
