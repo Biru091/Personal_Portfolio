@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Mail, MapPin, Send } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin,  } from "lucide-react";
 import Link from "next/link";
 import { useLayoutEffect } from "react";
 import gsap from "gsap";
@@ -34,7 +34,7 @@ export default function Contact() {
     <main className="contact-page min-h-screen overflow-hidden bg-white px-6 py-28 text-black md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
 
-        {/* Top */}
+       
         <div className="contact-small mb-8 flex items-center gap-3">
           <span className="h-2 w-2 rounded-full bg-black" />
 
@@ -43,7 +43,7 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* Heading */}
+       
         <div className="overflow-hidden">
           <h1 className="contact-title max-w-5xl text-[15vw] font-bold leading-[0.8] tracking-[-0.07em] md:text-[10vw]">
             Lets
@@ -52,19 +52,19 @@ export default function Contact() {
           </h1>
         </div>
 
-        {/* Content */}
+      
         <div className="contact-content mt-24 grid gap-16 border-t border-black/10 pt-12 md:grid-cols-2">
 
-          {/* Left */}
+         
           <div>
             <p className="max-w-lg text-xl leading-relaxed text-black/50 md:text-2xl">
               Have a project in mind, an idea you want to build, or simply
               want to say hello?
             </p>
 
-            {/* Email */}
+          
             <a
-              href="mailto:hello@example.com"
+              href="mailto:birendrabohara091@gmail.com"
               className="group mt-10 inline-flex items-center gap-4 border-b border-black/20 pb-3 text-lg transition-colors hover:border-black"
             >
               <Mail
@@ -80,13 +80,12 @@ export default function Contact() {
               />
             </a>
 
-            {/* Location */}
+          
             <div className="mt-8 flex items-center gap-4 text-black/50">
               <MapPin size={20} />
               <span>Kathmandu, Nepal</span>
             </div>
 
-            {/* Social */}
             <div className="mt-12 flex gap-8">
               <Link
                 href="https://github.com/biru091"

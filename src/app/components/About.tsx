@@ -32,12 +32,12 @@ export default function About() {
   return (
     <section className="about-page relative h-screen overflow-hidden bg-transparent">
       
-      {/* Background scrolling text */}
+     
     <h1 className="about-title absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap text-[20vw] font-black leading-none text-black/10">
   ABOUT ABOUT ABOUT ABOUT ABOUT
 </h1>
 
-      {/* Content */}
+      
       <div className="relative z-10 flex h-full items-center px-8 md:px-20">
         <div className="grid w-full grid-cols-1 gap-12 md:grid-cols-2">
 

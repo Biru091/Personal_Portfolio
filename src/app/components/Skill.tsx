@@ -131,10 +131,10 @@ export default function Skills() {
                 key={skill.name}
                 className="skill group flex aspect-square flex-col items-center justify-center border border-black"
               >
-                {/* Icon */}
+               
                 <Icon className="text-5xl text-black transition-transform duration-300 group-hover:scale-125 md:text-6xl" />
 
-                {/* Name */}
+              
                 <p className="mt-4 text-xs uppercase tracking-[0.2em] text-black transition-colors duration-300 group-hover:text-white">
                   {skill.name}
                 </p>
