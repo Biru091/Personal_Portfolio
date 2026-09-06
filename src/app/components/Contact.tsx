@@ -31,7 +31,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <main className="contact-page min-h-screen overflow-hidden bg-white px-6 py-28 text-black md:px-12 lg:px-20">
+    <main className="contact-page min-h-screen overflow-hidden bg-transparent px-6 py-28 text-black md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
 
        
@@ -57,7 +57,7 @@ export default function Contact() {
 
          
           <div>
-            <p className="max-w-lg text-xl leading-relaxed text-black/50 md:text-2xl">
+            <p className="max-w-lg text-xl leading-relaxed text-black/50 md:text-2xl ">
               Have a project in mind, an idea you want to build, or simply
               want to say hello?
             </p>

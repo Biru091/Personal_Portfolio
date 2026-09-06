@@ -9,29 +9,41 @@ export default function HeroContent() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    tl.from(".name", {
+    tl.to(".name", {
       opacity: 0,
-      y: -20,
-      duration: 0.5,
-      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".name",
+        start: "top 5%",
+        end: "top 30%",
+        scrub: 2,
+      }
     })
-      .from(".text1", {
+      .to(".text1", {
         opacity: 0,
-        y: -20,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 0.7,
+       
+      
+       scrollTrigger: {
+          trigger: ".text1",
+          start: "top 20%", 
+          end: "top 30%",
+          scrub: 2,
+       }
       })
-      .from(".buttons", {
+    
+      .to(".text2", {
         opacity: 0,
-        y: -20,
+        
         duration: 0.8,
         ease: "power3.out",
-      })
-      .from(".text2", {
-        opacity: 0,
-        y: -20,
-        duration: 0.8,
-        ease: "power3.out",
+        scrollTrigger: {
+        trigger: ".text2",
+        start: "top 80%",
+        end: "top 10%",
+        scrub: 2,
+        }
+
+       
       });
   });
 
@@ -50,7 +62,7 @@ export default function HeroContent() {
             From concept to creation.
           </p>
 
-          <div className="buttons flex w-full flex-wrap items-center justify-center gap-4 py-4">
+          {/* <div className="buttons flex w-full flex-wrap items-center justify-center gap-4 py-4">
 
             <Link
               href="#projects"
@@ -71,7 +83,7 @@ export default function HeroContent() {
               Contact Me
             </Link>
 
-          </div>
+          </div> */}
 
         </div>
 

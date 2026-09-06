@@ -1,10 +1,12 @@
-import { Geist } from "next/font/google";
+import { Syne } from "next/font/google";
+
 import Navbar from "./components/Navbar/Navbar";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 
-const geist = Geist({
-  variable: "--font-geist",
+
+const syne = Syne({
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -15,8 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={geist.className}>
+      <body className={syne.className}>
         <SmoothScroll/>
+        
         <Navbar/>
          
         {children}
