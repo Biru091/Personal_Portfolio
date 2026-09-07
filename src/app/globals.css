@@ -19,3 +19,10 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+.font-syne {
+  font-family: var(--font-syne);
+}
+
+.font-syne-mono {
+  font-family: var(--font-syne-mono);
+}

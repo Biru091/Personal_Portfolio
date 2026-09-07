@@ -25,11 +25,11 @@ export default function Rounded() {
   }, []);
 
   return (
-    <div className="fixed bottom-1 right-8 z-50 pointer-events-none">
+    <div className="fixed bottom-1 right-0 z-50 pointer-events-none">
       <svg
         width="200"
         height="200"
-        viewBox="0 0 500 500"
+        viewBox="0 0 400 400"
         className="overflow-visible"
       >
         <defs>

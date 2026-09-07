@@ -104,7 +104,7 @@ export default function Skills() {
   return (
     <main
       ref={sectionRef}
-      className="relative  min-h-[180vh] overflow-hidden bg-transparent text-black"
+      className="relative  min-h-[180vh] overflow-hidden  text-black bg-transparent"
     >
       <div className="sticky top-0 z-20 flex h-screen items-center justify-center pointer-events-none">
         <div className="absolute top-24 left-6 md:left-16">
@@ -120,7 +120,7 @@ export default function Skills() {
 
       <div
         ref={gridRef}
-        className="absolute left-0 top-[40vh] w-full px-5 md:px-12 bg-white"
+        className="absolute left-0 top-[40vh] w-full px-5 md:px-12 bg-transparent"
       >
         <div className="mx-auto grid max-w-7xl grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {skills.map((skill) => {

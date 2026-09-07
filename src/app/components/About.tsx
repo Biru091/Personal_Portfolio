@@ -9,8 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 export default function About() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(".about-title", {
-        x: "-125%",
+      gsap.from(".about-title", {
+     
+       opacity: 0,
+       scale:0.2,
         ease: "none",
 
         scrollTrigger: {
@@ -19,7 +21,7 @@ export default function About() {
           scrub: 2,
           pin: true,
           start: "top top",
-          end: "top -120%",
+          end: "top -130%",
         },
       });
     });
@@ -33,42 +35,40 @@ export default function About() {
     <section className="about-page relative h-screen overflow-hidden bg-transparent">
       
      
-    <h1 className="about-title absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap text-[20vw] font-black leading-none text-black/10">
+    {/* <h1 className="about-title absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap text-[20vw] font-black leading-none text-black/10">
   ABOUT ABOUT ABOUT ABOUT ABOUT
-</h1>
+</h1> */}
 
       
-      <div className="relative z-10 flex h-full items-center px-8 md:px-20">
+      <div className=" about-title relative z-10 flex h-full items-center px-8 md:px-20">
         <div className="grid w-full grid-cols-1 gap-12 md:grid-cols-2">
 
           <div>
-            <p className="mb-4 text-sm uppercase tracking-[0.3em] text-black/50">
+            <p className="mb-4 text-sm uppercase tracking-[0.3em] text-black/50 font-syne">
               Who I Am
             </p>
 
-            <h2 className="text-5xl font-bold leading-tight text-black md:text-7xl">
+            <h2 className="text-5xl font-bold leading-tight text-white md:text-7xl bg-black rounded-2xl p-11 font-syne">
               I build digital
               <br />
-              experiences.
+              Power.
             </h2>
           </div>
 
-          <div className="flex items-center">
-            <div className="max-w-xl">
-              <p className="text-lg leading-8 text-black/70 md:text-xl">
+          <div className="flex items-center bg-black rounded-2xl">
+            <div className="max-w-xl p-10">
+              <p className="text-lg leading-8 text-white md:text-xl font-syne">
                 I am Biru, a developer passionate about creating modern,
                 interactive and visually engaging websites.
               </p>
 
-              <p className="mt-6 text-lg leading-8 text-black/70 md:text-xl">
+              <p className="mt-6 text-lg leading-8 text-white md:text-xl font-syne">
                 I work with React, Next.js, TypeScript, Tailwind CSS,
                 GSAP and Three.js to create responsive interfaces,
                 animations and 3D experiences.
               </p>
 
-              <button className="mt-8 rounded-full bg-black px-7 py-3 text-sm font-medium text-white transition hover:scale-105">
-               Learning
-              </button>
+              
             </div>
           </div>
 

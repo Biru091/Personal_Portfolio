@@ -1,12 +1,15 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown,  } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function HeroContent() {
   useGSAP(() => {
+    
+
+
+
     const tl = gsap.timeline();
 
     tl.to(".name", {
@@ -18,18 +21,18 @@ export default function HeroContent() {
         scrub: 2,
       }
     })
-      .to(".text1", {
-        opacity: 0,
-        duration: 0.7,
+      // .to(".text1", {
+      //   opacity: 0,
+      //   duration: 0.7,
        
       
-       scrollTrigger: {
-          trigger: ".text1",
-          start: "top 20%", 
-          end: "top 30%",
-          scrub: 2,
-       }
-      })
+      //  scrollTrigger: {
+      //     trigger: ".text1",
+      //     start: "top 20%", 
+      //     end: "top 30%",
+      //     scrub: 2,
+      //  }
+      // })
     
       .to(".text2", {
         opacity: 0,
@@ -54,13 +57,13 @@ export default function HeroContent() {
 
         <div className="flex w-full flex-col items-center">
 
-          <p className="name mt-10 py-14 text-sm font-medium uppercase tracking-[0.3em] text-black">
+          <p className="name  text-sm font-medium uppercase tracking-[0.3em] text-black font-syne pt-10">
             Hello, I am Birendra
           </p>
 
-          <p className="text1 py-3 text-center text-3xl uppercase tracking-tight text-black/80 font-black">
+          {/* <p className="text1 py-3 text-center text-3xl uppercase tracking-tight text-black/80 font-black">
             From concept to creation.
-          </p>
+          </p> */}
 
           {/* <div className="buttons flex w-full flex-wrap items-center justify-center gap-4 py-4">
 
@@ -88,13 +91,13 @@ export default function HeroContent() {
         </div>
 
        
-        <div className="absolute bottom-20 md:bottom-8 right-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-blue-700 animate-pulse">
+        <div className="absolute bottom-20 md:bottom-8 right-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-blue-700 animate-pulse font-syne">
           Scroll
           <ArrowDown size={16} />
         </div>
 
         
-        <div className="text2 absolute bottom-20 left-7  w-2/7 items-center gap-3 text-wrap uppercase tracking-[0.2em] text-black md:flex md:text-2xl">
+        <div className="text2 absolute bottom-50 md:bottom-30 left-7  w-2/7 items-center gap-3 text-wrap uppercase tracking-[0.2em] text-black md:flex md:text-2xl font-syne">
           Turning concepts into experiences.
         </div>
 

@@ -1,64 +1,122 @@
-"use client"
-import Hero3D from "../Hero-section/Model/Model";
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import HeroContent from "../Hero-section/Hero-content/HeroContent";
 import SkillsPage from "../Skill";
 import About from "../About";
 import Contact from "@/app/components/Contact";
 import Movingtext from "@/app/components/Movingtext";
 import Rounded from "../Rounded";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Hero() {
+  const movingTextRef = useRef(null);
+  const roundedref=useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: "#skill",
+        start: "top bottom",
+
+        onEnter: () => {
+          gsap.to(movingTextRef.current, {
+            opacity: 0,
+            duration: 1.3,
+            pointerEvents: "none",
+          });
+        },
+
+        onLeaveBack: () => {
+          gsap.to(movingTextRef.current, {
+            opacity: 1,
+            duration: 0.3,
+          });
+        },
+        
+      });
+    });
+    const ctx1 = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: "#skill",
+        start: "top bottom",
+
+        onEnter: () => {
+          gsap.to(roundedref.current, {
+            opacity: 0,
+            duration: 1.3,
+            pointerEvents: "none",
+          });
+        },
+
+        onLeaveBack: () => {
+          gsap.to(roundedref.current, {
+            opacity: 1,
+            duration: 0.3,
+          });
+        },
+        
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <main  className="page relative ">
+    <main className="page relative">
 
-     
-      <div className="fixed inset-0 z-5 pointer-events-none">
-  <Hero3D />
-</div>
-
-<div className="fixed inset-0 z-0 pointer-events-none">
-  <Movingtext />
-</div>
-<div className=" absolute bottom-10 right-10 inset-0 z-10 pointer-events-none">
-  <Rounded />
-</div>
+    
+      <div
+        ref={movingTextRef}
+        className="fixed inset-0 z-10 pointer-events-none"
+      >
+        <Movingtext />
+      </div>
 
      
       <div className="relative z-20">
 
-        
+       
         <section
           id="home"
-          className="min-h-screen  bg-cover bg-center"
-          
+          className="relative min-h-screen"
         >
           <HeroContent />
         </section>
 
-       
+        
         <section
           id="about"
-          className="relative z-20"
+          className="relative min-h-screen"
         >
           <About />
         </section>
+
+       
         <section
           id="skill"
-          className="relative z-20"
+          className="relative min-h-screen"
         >
           <SkillsPage />
         </section>
-        
+
+       
         <section
           id="contact"
-          className="relative z-20"
+          className="relative min-h-screen"
         >
-         
           <Contact />
         </section>
-        
 
-        
+      </div>
 
+     
+      <div className=" bottom-10 right-2 z-50" ref={roundedref}>
+        <Rounded />
       </div>
 
     </main>
