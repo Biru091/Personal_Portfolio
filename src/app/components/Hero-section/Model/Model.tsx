@@ -1,24 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+
+import { Canvas } from "@react-three/fiber";
 
 import {
   OrbitControls,
   useAnimations,
   useGLTF,
-  useTexture,
 } from "@react-three/drei";
 
-import {
-  Group,
-  Mesh,
-  MeshStandardMaterial,
-  SRGBColorSpace,
-} from "three";
+import { Group } from "three";
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,65 +21,12 @@ function Model() {
   const group = useRef<Group>(null);
 
   const { scene, animations } = useGLTF("/3d/loop.glb");
-  const texture = useTexture("/3d/texture.jpg");
 
-  
-  const { size } = useThree();
-
- 
-  const modelScale = size.width < 768 ? 0.15 : 0.6;
-
- 
-  useGSAP(() => {
-    if (!group.current) return;
-
-    
-    gsap.from(group.current.position, {
-      opacity: 0,
-      z: -7,
-      duration: 1,
-      scrub: 1,
-      ease: "power3.out",
-    });
-
-   
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".page",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-    });
-
-    tl.to(group.current.rotation, {
-      y: Math.PI / 0.8,
-      duration: 0.6,
-    })
-      .to(
-        group.current.position,
-        {
-          x: 9,
-          y: 9,
-          duration: 0.4,
-        },
-        "<"
-      )
-      .to(
-        group.current.scale,
-        {
-          x: 0.1,
-          y: 0.1,
-          z: 0.1,
-          duration: 0.3,
-          ease: "none",
-        },
-        "<"
-      );
-  });
-
- 
   const { actions } = useAnimations(animations, group);
+
+  // ==========================================
+  // GLB ANIMATION
+  // ==========================================
 
   useEffect(() => {
     const animation = Object.values(actions)[0];
@@ -92,6 +34,8 @@ function Model() {
     if (!animation) return;
 
     animation.reset().fadeIn(0.5).play();
+
+    // Slow down the GLB's built-in animation
     animation.timeScale = 0.5;
 
     return () => {
@@ -100,63 +44,173 @@ function Model() {
     };
   }, [actions]);
 
- 
-  useEffect(() => {
-    scene.traverse((child) => {
-      if (!(child instanceof Mesh)) return;
+  // ==========================================
+  // GSAP SCROLL ANIMATION
+  // ==========================================
 
-      const material = new MeshStandardMaterial({
-        map: texture,
-        emissive: "#2563FF",
-        emissiveMap: texture,
-        emissiveIntensity: 2,
+  useEffect(() => {
+    if (!group.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#skill",
+
+          // Start when Skills section reaches top
+          start: "top top",
+
+          // Much longer scroll distance
+          end: "+=500%",
+
+          // Smooth scroll-controlled animation
+          scrub: 2,
+        },
       });
 
-      if (material.map) {
-        material.map.colorSpace = SRGBColorSpace;
-      }
+      // ======================================
+      // 1. SLOW ROTATION
+      // ======================================
 
-      child.material = material;
+      tl.to(group.current!.rotation, {
+        y: Math.PI * 2,
+        duration: 3,
+        ease: "none",
+      })
+
+        // ======================================
+        // 2. MOVE UP + RIGHT
+        // Runs together with rotation
+        // ======================================
+
+        .to(
+          group.current!.position,
+          {
+            x: 2,
+            y: 1,
+            duration: 3,
+            ease: "none",
+          },
+          "<"
+        )
+
+        // ======================================
+        // 3. MORE ROTATION
+        // ======================================
+
+        .to(group.current!.rotation, {
+          x: Math.PI * 2,
+          duration: 3,
+          ease: "none",
+        })
+
+        // ======================================
+        // 4. MOVE LEFT + UP
+        // ======================================
+
+        .to(group.current!.position, {
+          x: -2,
+          y: 2,
+          duration: 3,
+          ease: "none",
+        })
+
+        // ======================================
+        // 5. ROTATE AGAIN
+        // ======================================
+
+        .to(group.current!.rotation, {
+          z: Math.PI * 2,
+          duration: 3,
+          ease: "none",
+        })
+
+        // ======================================
+        // 6. FINAL MOVEMENT
+        // ======================================
+
+        .to(group.current!.position, {
+          x: 0,
+          y: 0,
+          duration: 3,
+          ease: "none",
+        })
+
+        // ======================================
+        // 7. SHRINK AT THE VERY END
+        // ======================================
+
+        .to(group.current!.scale, {
+          x: 0.05,
+          y: 0.05,
+          z: 0.05,
+          duration: 2,
+          ease: "none",
+        });
     });
-  }, [scene, texture]);
+
+    return () => ctx.revert();
+  }, []);
+
+  // ==========================================
+  // MODEL
+  // ==========================================
 
   return (
     <group
       ref={group}
-      scale={modelScale}
+      scale={0.2}
+      position={[0, -3, 0]}
+      rotation={[0, -2, 0]}
     >
       <primitive
         object={scene}
-        position={[0, -4, 0]}
-        rotation={[3, Math.PI / 2, Math.PI / 2]}
+        position={[-15, -2, 0]}
+        rotation={[7, 0, 8]}
       />
     </group>
   );
 }
 
+// ==============================================
+// HERO 3D
+// ==============================================
+
 export default function Hero3D() {
   return (
-    <Canvas
-      camera={{
-        position: [0, 0, 5],
-        fov: 45,
-      }}
-    >
-      <ambientLight intensity={0.2} />
+    <div className="h-full w-full">
+      <Canvas
+        camera={{
+          position: [0, 0, 5],
+          fov: 45,
+        }}
+        gl={{
+          antialias: true,
+          alpha: true,
+        }}
+      >
+        {/* LIGHTING */}
 
-      <directionalLight
-        position={[5, 5, 5]}
-        intensity={0.5}
-      />
+        <ambientLight intensity={0.5} />
 
-      <Model />
+        <directionalLight
+          position={[5, 5, 5]}
+          intensity={1}
+        />
 
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-      />
-    </Canvas>
+        {/* MODEL */}
+
+        <Model />
+
+        {/* CONTROLS */}
+
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+        />
+      </Canvas>
+    </div>
   );
 }
 
+// Preload model
 useGLTF.preload("/3d/loop.glb");

@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowDown,  } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -91,10 +90,7 @@ export default function HeroContent() {
         </div>
 
        
-        <div className="absolute bottom-20 md:bottom-8 right-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-blue-700 animate-pulse font-syne">
-          Scroll
-          <ArrowDown size={16} />
-        </div>
+       
 
         
         <div className="text2 absolute bottom-50 md:bottom-30 left-7  w-2/7 items-center gap-3 text-wrap uppercase tracking-[0.2em] text-black md:flex md:text-2xl font-syne">

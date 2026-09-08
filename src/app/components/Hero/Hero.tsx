@@ -10,7 +10,7 @@ import About from "../About";
 import Contact from "@/app/components/Contact";
 import Movingtext from "@/app/components/Movingtext";
 import Rounded from "../Rounded";
-
+import Hero3D from "../Hero-section/Model/Model";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
@@ -97,13 +97,20 @@ export default function Hero() {
         </section>
 
        
-        <section
-          id="skill"
-          className="relative min-h-screen"
-        >
-          <SkillsPage />
-        </section>
+     <section
+  id="skill"
+  className="relative min-h-screen overflow-hidden"
+>
+  {/* 3D MODEL */}
+  <div className="absolute inset-0 z-0 h-full w-full">
+    <Hero3D />
+  </div>
 
+  {/* SKILLS */}
+  <div className="relative z-10">
+    <SkillsPage />
+  </div>
+</section>
        
         <section
           id="contact"
