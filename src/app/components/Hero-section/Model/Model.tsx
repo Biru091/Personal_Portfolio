@@ -14,13 +14,14 @@ import { Group } from "three";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function Model() {
   const group = useRef<Group>(null);
 
-  const { scene, animations } = useGLTF("/3d/loop.glb");
+  const { scene, animations } = useGLTF("/3d/bird.glb");
 
   const { actions } = useAnimations(animations, group);
 
@@ -35,7 +36,6 @@ function Model() {
 
     animation.reset().fadeIn(0.5).play();
 
-    // Slow down the GLB's built-in animation
     animation.timeScale = 0.5;
 
     return () => {
@@ -44,149 +44,175 @@ function Model() {
     };
   }, [actions]);
 
-  // ==========================================
-  // GSAP SCROLL ANIMATION
-  // ==========================================
-
-  useEffect(() => {
+ 
+  useGSAP(() => {
     if (!group.current) return;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#skill",
-
-          // Start when Skills section reaches top
-          start: "top top",
-
-          // Much longer scroll distance
-          end: "+=500%",
-
-          // Smooth scroll-controlled animation
-          scrub: 2,
-        },
-      });
-
-      // ======================================
-      // 1. SLOW ROTATION
-      // ======================================
-
-      tl.to(group.current!.rotation, {
-        y: Math.PI * 2,
-        duration: 3,
-        ease: "none",
-      })
-
-        // ======================================
-        // 2. MOVE UP + RIGHT
-        // Runs together with rotation
-        // ======================================
-
-        .to(
-          group.current!.position,
-          {
-            x: 2,
-            y: 1,
-            duration: 3,
-            ease: "none",
-          },
-          "<"
-        )
-
-        // ======================================
-        // 3. MORE ROTATION
-        // ======================================
-
-        .to(group.current!.rotation, {
-          x: Math.PI * 2,
-          duration: 3,
-          ease: "none",
-        })
-
-        // ======================================
-        // 4. MOVE LEFT + UP
-        // ======================================
-
-        .to(group.current!.position, {
-          x: -2,
-          y: 2,
-          duration: 3,
-          ease: "none",
-        })
-
-        // ======================================
-        // 5. ROTATE AGAIN
-        // ======================================
-
-        .to(group.current!.rotation, {
-          z: Math.PI * 2,
-          duration: 3,
-          ease: "none",
-        })
-
-        // ======================================
-        // 6. FINAL MOVEMENT
-        // ======================================
-
-        .to(group.current!.position, {
-          x: 0,
-          y: 0,
-          duration: 3,
-          ease: "none",
-        })
-
-        // ======================================
-        // 7. SHRINK AT THE VERY END
-        // ======================================
-
-        .to(group.current!.scale, {
-          x: 0.05,
-          y: 0.05,
-          z: 0.05,
-          duration: 2,
-          ease: "none",
-        });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-animation",
+        start: "top top",
+        end: "+=2800",
+        scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+      },
     });
 
-    return () => ctx.revert();
-  }, []);
+    tl.to(group.current.position, {
+      x: -8,
+      y: 2,
+      z: 2,
+      duration: 5,
+      ease: "power2.inOut",
+    })
 
-  // ==========================================
-  // MODEL
-  // ==========================================
+      .to(
+        group.current.rotation,
+        {
+          x: 0,
+          y: Math.PI * 0.35,
+          z: -Math.PI * 0.08,
+          duration: 8,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+
+      .to(
+        group.current.scale,
+        {
+          x: 0.0035,
+          y: 0.0035,
+          z: 0.0035,
+          duration: 8,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+
+      .to(group.current.position, {
+        x: 1,
+        y: -0.8,
+        z: 0.5,
+        duration: 8,
+        ease: "power2.inOut",
+      })
+
+      .to(
+        group.current.rotation,
+        {
+          x: Math.PI * 0.08,
+          y: Math.PI * 0.7,
+          z: 0,
+          duration: 8,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+
+      .to(
+        group.current.scale,
+        {
+          x: 0.003,
+          y: 0.003,
+          z: 0.003,
+          duration: 8,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+
+      .to(group.current.position, {
+        x: 3,
+        y: -0.3,
+        z: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      })
+
+      .to(
+        group.current.rotation,
+        {
+          x: 0,
+          y: Math.PI,
+          z: Math.PI * 0.08,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+
+      .to(
+        group.current.scale,
+        {
+          x: 0.0025,
+          y: 0.0025,
+          z: 0.0025,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+
+      .to(group.current.position, {
+        x: 4,
+        y: -0.8,
+        z: -0.5,
+        duration: 0.8,
+        ease: "power2.inOut",
+      })
+
+      .to(
+        group.current.rotation,
+        {
+          x: 0,
+          y: Math.PI * 1.2,
+          z: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+        },
+        "<"
+      );
+  });
+
+
+ 
 
   return (
     <group
       ref={group}
-      scale={0.2}
-      position={[0, -3, 0]}
-      rotation={[0, -2, 0]}
+      scale={0.003}
+      position={[5, 0, 0]}
+      rotation={[0, 2, 0]}
     >
       <primitive
         object={scene}
-        position={[-15, -2, 0]}
-        rotation={[7, 0, 8]}
+        position={[0, 0, 0]}
+        rotation={[0, 0, 0]}
       />
     </group>
   );
 }
 
-// ==============================================
-// HERO 3D
-// ==============================================
 
 export default function Hero3D() {
   return (
-    <div className="h-full w-full">
+    <section className="hero-animation relative h-[100svh] w-full overflow-hidden">
       <Canvas
+        className="!absolute inset-0 h-full w-full"
         camera={{
-          position: [0, 0, 5],
+          position: [0, 0, 8],
           fov: 45,
+          near: 0.1,
+          far: 1000,
         }}
         gl={{
           antialias: true,
           alpha: true,
         }}
+        dpr={[1, 2]}
       >
         {/* LIGHTING */}
 
@@ -208,9 +234,12 @@ export default function Hero3D() {
           enablePan={false}
         />
       </Canvas>
-    </div>
+    </section>
   );
 }
 
-// Preload model
-useGLTF.preload("/3d/loop.glb");
+// ==============================================
+// PRELOAD MODEL
+// ==============================================
+
+useGLTF.preload("/3d/bird.glb");
