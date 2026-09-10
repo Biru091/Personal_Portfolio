@@ -97,20 +97,24 @@ export default function Hero() {
         </section>
 
        
-     <section
-  id="skill"
-  className="relative min-h-screen overflow-hidden"
+     <section id="skill"className="relative min-h-screen overflow-hidden"
 >
   {/* 3D MODEL */}
   <div className="absolute inset-0 z-0 h-full w-full">
     <Hero3D />
   </div>
+   
 
   {/* SKILLS */}
-  <div className="relative z-10">
+  <div className="relative"
+   >
     <SkillsPage />
-  </div>
+   </div>
+   
+   
 </section>
+
+
        
         <section
           id="contact"

@@ -1,9 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import Image from "next/image";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -13,7 +13,6 @@ import {
   FaGitAlt,
   FaGithub,
 } from "react-icons/fa";
-
 import {
   SiTypescript,
   SiNextdotjs,
@@ -22,6 +21,7 @@ import {
   SiGreensock,
   SiThreedotjs,
 } from "react-icons/si";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,12 +44,37 @@ const skills = [
 export default function Skills() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const middleLogoRef = useRef<HTMLImageElement>(null);
+  const movingTrackRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
+  useGSAP(
+    () => {
       const items = gsap.utils.toArray<HTMLElement>(".skill");
+gsap.set(movingTrackRef.current, {
+    xPercent: -50,
+  });
+     
+      if (movingTrackRef.current) {
+        gsap.to(movingTrackRef.current, {
+          xPercent: 0,
+          duration: 15,
+          ease: "none",
+          repeat: -1,
+        });
+      }
 
-      // Initial animation
+     
+      if (middleLogoRef.current) {
+        gsap.to(middleLogoRef.current, {
+          x: "+=20",
+          duration: 1.3,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+        });
+      }
+
+      
       gsap.from(items, {
         opacity: 0,
         y: 100,
@@ -62,19 +87,21 @@ export default function Skills() {
         ease: "power3.out",
       });
 
-      // Move whole grid while scrolling
-      gsap.to(gridRef.current, {
-        y: "-35vh",
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
+     
+      if (gridRef.current) {
+        gsap.to(gridRef.current, {
+          y: "-35vh",
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5,
+          },
+        });
+      }
 
-      // Individual card movement
+     
       items.forEach((item, index) => {
         const direction = index % 2 === 0 ? 1 : -1;
 
@@ -90,10 +117,11 @@ export default function Skills() {
           },
         });
       });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    {
+      scope: sectionRef,
+    }
+  );
 
   return (
     <main
@@ -113,7 +141,6 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* SKILL GRID */}
       <div
         ref={gridRef}
         className="absolute left-0 top-[40vh] z-10 w-full px-5 md:px-12"
@@ -135,6 +162,31 @@ export default function Skills() {
               </div>
             );
           })}
+        </div>
+
+        <div className="py-9 md:py-9 md:pt-20  pointer-events-none relative mt-10 w-full  text-3xl font-syne md:text-7xl">
+          <div
+            ref={movingTrackRef}
+            className="moving-track flex w-max whitespace-nowrap"
+          >
+            <span>
+              CREATIVE DEVELOPER ✦ 3D DESIGNER ✦
+            </span>
+
+            <span>
+              CREATIVE DEVELOPER ✦ 3D DESIGNER ✦
+            </span>
+          </div>
+
+          
+         <Image
+  ref={middleLogoRef}
+  src="/menu/img.webp"
+  alt="Arrow"
+  width={300}
+  height={300}
+  className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 object-contain md:w-60"
+/>
         </div>
       </div>
     </main>
