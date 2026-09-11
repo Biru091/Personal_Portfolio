@@ -74,7 +74,10 @@ export default function Navbar() {
         </nav>
         <div className="flex flex-1 items-center justify-end gap-2">
           
-           <span className="text-sm">Cv</span>
+           <Link href="/menu/birendraCV1.pdf">
+          <button className="bg-gray-400 text-white rounded-lg px-3 py-1 cursor-pointer font-syne-mono ">CV</button>
+           
+           </Link>
         </div>
        
       </div>

@@ -175,25 +175,24 @@ export default function About() {
   return (
     <section className="about-page relative h-screen w-full overflow-hidden bg-transparent">
 
-      {/* Background circle */}
 
       <div className="about-circle  pointer-events-none absolute right-[15vw] top-1/2 h-[45vw] w-[45vw] -translate-y-1/2 rounded-full border border-black/20" />
 
       <div className="pointer-events-none absolute  right-[8vw] top-1/2 h-[30vw] w-[30vw] -translate-y-1/2 rounded-full border border-black/20" />
 
-      {/* Section number */}
+     
 
       <div className="about-number absolute left-8 top-8 font-syne text-xs uppercase tracking-[0.3em] text-black/40 md:left-20 md:top-12">
-        01 / About
+         About
       </div>
 
-      {/* Main content */}
+      
 
       <div className="relative z-10 flex h-full items-center px-6 md:px-20">
 
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
 
-          {/* Left */}
+         
 
           <div className="about-left flex flex-col justify-center rounded-[2rem] bg-black p-8 md:p-12">
 
@@ -221,7 +220,7 @@ export default function About() {
 
           </div>
 
-          {/* Right */}
+          
 
           <div className="about-right flex items-center rounded-[2rem] border border-black/10 bg-white/60 p-8 backdrop-blur-xl md:p-12">
 
@@ -266,8 +265,7 @@ export default function About() {
 
       </div>
 
-      {/* Bottom text */}
-
+     
       <div className="absolute bottom-8 left-8 right-8 flex items-center justify-between md:left-20 md:right-20">
         <span className="font-syne text-[10px] uppercase tracking-[0.25em] text-black/30">
           Digital experiences
