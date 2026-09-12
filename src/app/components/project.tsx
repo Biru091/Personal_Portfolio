@@ -27,7 +27,7 @@ const projects = [
   },
   {
     number: "02",
-    title: "Hukut",
+    title: "Hukut Clone",
     category: "E-Commerce",
     description:
       "A modern product experience built with Next.js, interactive 3D models and a clean shopping interface.",
@@ -36,8 +36,8 @@ const projects = [
   },
   {
     number: "03",
-    title: "Mheecha",
-    category: "Web Application",
+    title: "Mheecha Clone",
+    category: "E-Commerce",
     description:
       "A responsive digital platform focused on simplicity, usability and a smooth modern interface.",
     icon: Newspaper,
