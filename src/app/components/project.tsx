@@ -10,6 +10,7 @@ import {
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,8 @@ const projects = [
     description:
       "An interactive web experience combining modern frontend development with immersive 3D elements.",
     icon: Code2,
+    link:"https://3-d-website-gray.vercel.app/"
+    
   },
   {
     number: "02",
@@ -29,6 +32,7 @@ const projects = [
     description:
       "A modern product experience built with Next.js, interactive 3D models and a clean shopping interface.",
     icon: ShoppingBag,
+    link:"https://hukut-clone-next-js.vercel.app/"
   },
   {
     number: "03",
@@ -37,6 +41,7 @@ const projects = [
     description:
       "A responsive digital platform focused on simplicity, usability and a smooth modern interface.",
     icon: Newspaper,
+    link:"https://e-commerce-next-js-jdks.vercel.app/"
   },
   {
     number: "04",
@@ -45,6 +50,7 @@ const projects = [
     description:
       "A fashion store concept with product discovery, cart management and a distinctive visual identity.",
     icon: Shirt,
+    link:"https://nepcloth.vercel.app/"
   },
 ];
 
@@ -66,9 +72,7 @@ export default function Projects() {
         },
       });
 
-      /*
-       * HEADER
-       */
+     
 
       timeline
         .fromTo(
@@ -115,9 +119,7 @@ export default function Projects() {
           "-=0.4"
         );
 
-      /*
-       * PROJECTS
-       */
+     
 
       cards.forEach((card, index) => {
         const line = card.querySelector(".project-line");
@@ -238,9 +240,7 @@ export default function Projects() {
           );
       });
 
-      /*
-       * BACKGROUND NUMBER
-       */
+      
 
       timeline.fromTo(
         ".background-number",
@@ -259,10 +259,7 @@ export default function Projects() {
         "-=2"
       );
 
-      /*
-       * HOVER ANIMATION
-       */
-
+     
       cards.forEach((card) => {
         const number = card.querySelector(".project-number");
         const title = card.querySelector(".project-title");
@@ -355,13 +352,10 @@ export default function Projects() {
       id="projects"
       className="relative z-10 min-h-screen overflow-hidden bg-white px-6 py-32 text-black md:px-12 lg:px-20"
     >
-      <div className="background-number pointer-events-none absolute -right-10 top-20 select-none text-[30rem] font-bold leading-none tracking-[-0.1em] text-black/[0.025] md:text-[45rem]">
-        04
-      </div>
+    
 
       <div className="relative mx-auto max-w-7xl">
-        {/* Header */}
-
+       
         <div className="mb-28">
           <div className="project-small-title mb-6 flex items-center gap-4">
             <span className="h-px w-12 bg-black" />
@@ -385,7 +379,7 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Projects */}
+       
 
         <div className="project-list">
           {projects.map((project) => {
@@ -396,6 +390,7 @@ export default function Projects() {
                 key={project.number}
                 className="project-item group relative cursor-pointer py-10 md:py-14"
               >
+               <Link href={project.link}>
                 <div className="project-line absolute left-0 top-0 h-px w-full bg-black/15" />
 
                 <div className="grid grid-cols-[60px_1fr_auto] items-center gap-5 md:grid-cols-[100px_1fr_280px_auto] md:gap-10">
@@ -434,6 +429,7 @@ export default function Projects() {
                     />
                   </div>
                 </div>
+                </Link> 
 
                 <div className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-black transition-transform duration-700 group-hover:scale-x-100" />
               </div>
@@ -441,15 +437,15 @@ export default function Projects() {
           })}
         </div>
 
-        {/* Footer */}
+       
 
         <div className="mt-16 flex items-center justify-between border-t border-black/10 pt-6">
           <span className="text-[10px] uppercase tracking-[0.3em] text-black/35">
-            04 — Projects
+             Projects
           </span>
 
           <span className="text-[10px] uppercase tracking-[0.3em] text-black/35">
-            2024 — 2026
+            2026
           </span>
         </div>
       </div>
