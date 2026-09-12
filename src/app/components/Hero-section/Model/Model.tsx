@@ -52,7 +52,7 @@ function Model() {
       scrollTrigger: {
         trigger: ".hero-animation",
         start: "top top",
-        end: "+=2800",
+        end: "+=1800",
         scrub: 1,
         pin: true,
         pinSpacing: true,

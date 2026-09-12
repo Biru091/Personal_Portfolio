@@ -11,6 +11,7 @@ import Contact from "@/app/components/Contact";
 import Movingtext from "@/app/components/Movingtext";
 import Rounded from "../Rounded";
 import Hero3D from "../Hero-section/Model/Model";
+import CircularImages from "../project";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
@@ -109,13 +110,13 @@ export default function Hero() {
   <div className="relative"
    >
     <SkillsPage />
+     
+     <CircularImages/>
+    
    </div>
    
    
-</section>
-
-
-       
+</section>  
         <section
           id="contact"
           className="relative min-h-screen"
@@ -124,6 +125,7 @@ export default function Hero() {
         </section>
 
       </div>
+    
 
      
       <div className=" bottom-10 right-2 z-50" ref={roundedref}>

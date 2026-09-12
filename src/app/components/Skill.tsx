@@ -64,15 +64,7 @@ gsap.set(movingTrackRef.current, {
       }
 
      
-      if (middleLogoRef.current) {
-        gsap.to(middleLogoRef.current, {
-          x: "+=20",
-          duration: 1.3,
-          repeat: -1,
-          yoyo: true,
-          ease: "power1.inOut",
-        });
-      }
+      
 
       
       gsap.from(items, {
@@ -179,14 +171,7 @@ gsap.set(movingTrackRef.current, {
           </div>
 
           
-         <Image
-  ref={middleLogoRef}
-  src="/menu/img.webp"
-  alt="Arrow"
-  width={300}
-  height={300}
-  className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 object-contain md:w-60"
-/>
+       
         </div>
       </div>
     </main>
